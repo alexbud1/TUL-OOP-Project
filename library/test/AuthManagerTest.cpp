@@ -12,8 +12,14 @@ BOOST_AUTO_TEST_SUITE(AuthManagerTestSuite)
     BOOST_AUTO_TEST_CASE(testAuthManager_authenticateUser) {
         AuthManager authManager;
         string username = "admin";
-        string password = "test";
+        string password = "password";
         BOOST_CHECK(authManager.authenticateUser(username, password));
+    }
+    BOOST_AUTO_TEST_CASE(testAuthManager_registerUser_error) {
+        AuthManager authManager;
+        string username = "admin";
+        string password = "password";
+        BOOST_CHECK_EQUAL(authManager.registerUser(username, password), false);
     }
 
 BOOST_AUTO_TEST_SUITE_END()

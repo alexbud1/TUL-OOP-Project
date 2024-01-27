@@ -14,6 +14,7 @@ public:
     virtual ~AuthManager();
 
     static bool authenticateUser(const string& username, const string& password);
+    static bool registerUser(const string& username, const string& password);
 };
 
 #endif //CRANEPROJECT_AUTHMANAGER_H

@@ -11,6 +11,10 @@ set(SOURCE_FILES
         ../program/src/utils.cpp
         include/AuthManager.h
         src/AuthManager.cpp
+        include/CustomerManager.h
+        include/JSONUtility.h
+        src/JSONUtility.cpp
+        src/CustomerManager.cpp
 )
 
 add_library(Library ${SOURCE_FILES})

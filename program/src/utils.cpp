@@ -4,16 +4,14 @@
 #include <vector>
 #include <string>
 #include "CLIInterface.h"
+#include "CustomerManager.h"
 
 using namespace std;
 
-bool check_option_validity(string option, const vector<string>& options){
-    for (const auto& opt : options){
-        if (opt == option){
-            return true;
-        }
-    }
-    string error_message = "Invalid option. Please try again.";
-    CLIInterface::displayMessage(error_message);
-    return false;
-}
+
+
+
+
+
+
+

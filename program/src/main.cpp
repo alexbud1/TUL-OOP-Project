@@ -15,36 +15,54 @@ int main() {
         string choice = CLIInterface::getInput();
         vector<string> options = {"1", "2", "3"};
 
-        if (!check_option_validity(choice, options)){
+        if (!CLIInterface::check_option_validity(choice, options)){
             continue;
         }
 
-        if (choice == "1") {
+        if (choice == "1") { // Login
             string login_message = "Please enter your login and press Enter.";
             CLIInterface::displayMessage(login_message);
             string login = CLIInterface::getInput();
+
             string password_message = "Please enter your password and press Enter.";
             CLIInterface::displayMessage(password_message);
             string password = CLIInterface::getInput();
+
             bool user_exists = AuthManager::authenticateUser(login, password);
             if (!user_exists){
                 string error_message = "Authentication failed. Please try again.";
                 CLIInterface::displayMessage(error_message);
                 continue;
             }
+
             string success_message = "You have successfully logged in!";
             CLIInterface::displayMessage(success_message);
-            break;
-        }else if (choice == "2"){
+
+            if (not CLIInterface::go_to_main_menu(login)){
+                break;
+            }
+        }else if (choice == "2"){ // Register
             string login_message = "Please enter your login and press Enter.";
             CLIInterface::displayMessage(login_message);
             string login = CLIInterface::getInput();
+
             string password_message = "Please enter your password and press Enter.";
             CLIInterface::displayMessage(password_message);
             string password = CLIInterface::getInput();
+
+            bool registration_success = AuthManager::registerUser(login, password);
+            if (!registration_success){
+                string error_message = "Registration failed. Please try again.";
+                CLIInterface::displayMessage(error_message);
+                continue;
+            }
+
             string success_message = "You have successfully registered!";
             CLIInterface::displayMessage(success_message);
-            break;
+
+            if (not CLIInterface::go_to_main_menu(login)){
+                break;
+            }
         }else if (choice == "3"){
             string exit_message = "Thank you for using our system. Goodbye!";
             CLIInterface::displayMessage(exit_message);

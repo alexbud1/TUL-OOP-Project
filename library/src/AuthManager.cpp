@@ -2,7 +2,9 @@
 // Created by Oleksii Budzinskyi on 16/01/2024.
 //
 #include "AuthManager.h"
+#include "CLIInterface.h"
 #include "Hasher.h"
+#include "JSONUtility.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -16,17 +18,7 @@ AuthManager::AuthManager() = default;
 AuthManager::~AuthManager() = default;
 
 bool isUserExist(const std::string& filename, const std::string& login) {
-    std::ifstream file(filename);
-
-    if (!file.is_open()) {
-        std::cout << "Error opening file: " << filename << std::endl;
-        return false;
-    }
-
-    json jsonData;
-    file >> jsonData;
-
-    file.close();
+    json jsonData = JSONUtility::readJSONFromFile(filename);
 
     // Check if the "users" array exists in the JSON
     if (jsonData.find("users") != jsonData.end() && jsonData["users"].is_array()) {
@@ -36,27 +28,17 @@ bool isUserExist(const std::string& filename, const std::string& login) {
             if (user.find("login") != user.end() && user["login"].is_string()) {
                 // Compare the login with the provided login
                 if (user["login"] == login) {
-                    return true; // User found
+                    return true; // CustomerManager found
                 }
             }
         }
     }
 
-    return false; // User not found
+    return false; // CustomerManager not found
 }
 
 bool isPasswordValid(const string& login, const string& password){
-    std::ifstream file("../../users.json");
-
-    if (!file.is_open()) {
-        std::cout << "Error opening file: " << "../../users.json" << std::endl;
-        return false;
-    }
-
-    json jsonData;
-    file >> jsonData;
-
-    file.close();
+    json jsonData = JSONUtility::readJSONFromFile("../../users.json");
 
     // Check if the "users" array exists in the JSON
     if (jsonData.find("users") != jsonData.end() && jsonData["users"].is_array()) {
@@ -86,4 +68,36 @@ bool AuthManager::authenticateUser(const string& username, const string& passwor
         return true;
     }
     return false;
+}
+
+bool AuthManager::registerUser(const string& username, const string& password){
+    if (isUserExist("../../users.json", username)){
+        string error = "CustomerManager with this login already exists. Please try again.";
+        CLIInterface::displayMessage(error);
+        return false;
+    }
+
+    json jsonData = JSONUtility::readJSONFromFile("../../users.json");
+
+    // Check if the "users" array exists in the JSON
+    if (jsonData.find("users") != jsonData.end() && jsonData["users"].is_array()) {
+        // Add the new user to the "users" array
+        jsonData["users"].push_back({
+            {"login", username},
+            {"password", Hasher::hashString(password)}
+        });
+    }
+
+    std::ofstream fileOut("../../users.json");
+
+    if (!fileOut.is_open()) {
+        std::cout << "Error opening file: " << "../../users.json" << std::endl;
+        return false;
+    }
+
+    fileOut << jsonData.dump(4) << std::endl;
+
+    fileOut.close();
+
+    return true;
 }
