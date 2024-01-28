@@ -5,6 +5,9 @@
 #include <iostream>
 #include <string>
 #include "CustomerManager.h"
+#include "EcoVMFactory.h"
+#include "StandardVMFactory.h"
+#include "PerformanceVMFactory.h"
 
 
 using namespace std;
@@ -56,8 +59,21 @@ bool CLIInterface::go_to_main_menu(string& login){
         }
 
         if (choice == "1"){
-            string plans_message = "Available plans:";
+            string plans_message = "Available plans:\n";
             CLIInterface::displayMessage(plans_message);
+
+            EcoVMFactory ecoVMFactory;
+            auto ecoVM = ecoVMFactory.CreateVM(1, "EcoVM", "Intel Core i5", 4, "NVIDIA GeForce GTX 1050", 8, 256, 500);
+            ecoVM->displayInfo();
+
+            StandardVMFactory standardVMFactory;
+            auto standardVM = standardVMFactory.CreateVM(2, "StandardVM", "Intel Core i7", 8, "NVIDIA GeForce GTX 1080", 16, 512, 1000);
+            standardVM->displayInfo();
+
+            PerformanceVMFactory performanceVMFactory;
+            auto performanceVM = performanceVMFactory.CreateVM(3, "PerformanceVM", "Intel Core i9", 16, "NVIDIA GeForce RTX 4090", 64, 4096, 2500);
+            performanceVM->displayInfo();
+
         }else if (choice == "2"){
             string rent_message = "Please enter the name of the plan you want to rent and press Enter.";
             CLIInterface::displayMessage(rent_message);

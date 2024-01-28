@@ -15,6 +15,17 @@ set(SOURCE_FILES
         include/JSONUtility.h
         src/JSONUtility.cpp
         src/CustomerManager.cpp
+        include/VirtualMachine.h
+        include/EcoVM.h
+        include/VMFactory.h
+        include/EcoVMFactory.h
+        src/EcoVM.cpp
+        include/StandardVMFactory.h
+        include/StandardVM.h
+        src/StandardVM.cpp
+        include/PerformanceVM.h
+        src/PerformanceVM.cpp
+        include/PerformanceVMFactory.h
 )
 
 add_library(Library ${SOURCE_FILES})
