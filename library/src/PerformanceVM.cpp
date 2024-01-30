@@ -35,3 +35,7 @@ void PerformanceVM::deactivatePerformanceMode() {
     string message = "Performance mode deactivated for VM with ID: " + std::to_string(getId());
     CLIInterface::displayMessage(message);
 }
+
+bool PerformanceVM::getIsPerformance() const {
+    return isPerformance;
+}

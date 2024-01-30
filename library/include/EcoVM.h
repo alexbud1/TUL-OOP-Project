@@ -17,6 +17,7 @@ public:
     void displayInfo() const override;
     void activateEcoMode();
     void deactivateEcoMode();
+    bool getIsEco() const;
 };
 
 #endif //CRANEPROJECT_ECOVM_H

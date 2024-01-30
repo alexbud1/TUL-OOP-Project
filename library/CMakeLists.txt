@@ -26,6 +26,8 @@ set(SOURCE_FILES
         include/PerformanceVM.h
         src/PerformanceVM.cpp
         include/PerformanceVMFactory.h
+        include/RentalManager.h
+        src/RentalManager.cpp
 )
 
 add_library(Library ${SOURCE_FILES})
@@ -66,7 +68,6 @@ endif()
 
 set(SOURCE_TEST_FILES
         test/master.cpp
-        test/HasherTest.cpp
 )
 
 include_directories(
@@ -78,6 +79,12 @@ add_executable (Test ${SOURCE_TEST_FILES}
         test/HasherTest.cpp
         test/AuthManagerTest.cpp
         test/CLIInterfaceTest.cpp
+        test/RentalManagerTest.cpp
+        test/EcoVMTest.cpp
+        test/EcoVMFactoryTest.cpp
+        test/PerformanceVMTest.cpp
+        test/PerformanceVMFactoryTest.cpp
+        test/StandardVMFactoryTest.cpp
 )
 
 add_executable (TestContainer ${SOURCE_TEST_FILES})

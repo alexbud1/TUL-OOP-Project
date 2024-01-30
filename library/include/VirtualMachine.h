@@ -19,6 +19,7 @@ private:
     unsigned int ramSize;
     unsigned int diskSize;
     int powerConsumption; // in Watts
+    string vm_type;
 
 public:
     // Pure virtual function to make the class abstract
@@ -32,6 +33,7 @@ public:
     unsigned int getRamSize() const { return ramSize; }
     unsigned int getDiskSize() const { return diskSize; }
     int getPowerConsumption() const { return powerConsumption; }
+    string getVMType() const { return vm_type; }
 
     void setId(unsigned int newId) { id = newId; }
     void setName(const std::string& newName) { name = newName; }
@@ -41,6 +43,7 @@ public:
     void setRamSize(unsigned int newRamSize) { ramSize = newRamSize; }
     void setDiskSize(unsigned int newDiskSize) { diskSize = newDiskSize; }
     void setPowerConsumption(int newPowerConsumption) { powerConsumption = newPowerConsumption; }
+    void setVMType(string newVMType) { vm_type = newVMType; }
 
     // Destructor (virtual to ensure proper cleanup in derived classes)
     virtual ~VirtualMachine() = default;

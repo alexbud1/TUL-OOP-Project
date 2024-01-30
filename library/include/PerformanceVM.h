@@ -16,5 +16,6 @@ public:
     void displayInfo() const override;
     void activatePerformanceMode();
     void deactivatePerformanceMode();
+    bool getIsPerformance() const;
 };
 #endif //CRANEPROJECT_PERFORMANCEVM_H

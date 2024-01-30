@@ -21,9 +21,10 @@ public:
             string gpuModel,
             unsigned int ramSize,
             unsigned int diskSize,
-            int powerConsumption
+            int powerConsumption,
+            string s
             ) const override {
-                std::unique_ptr<VirtualMachine> ecoVM(new EcoVM());
+                std::unique_ptr<EcoVM> ecoVM(new EcoVM());
                 ecoVM->setId(id);
                 ecoVM->setName(name);
                 ecoVM->setCpuModel(cpuModel);
@@ -32,7 +33,7 @@ public:
                 ecoVM->setRamSize(ramSize);
                 ecoVM->setDiskSize(diskSize);
                 ecoVM->setPowerConsumption(powerConsumption);
-
+                ecoVM->setVMType("EcoVM");
                  return ecoVM;
             }
 };

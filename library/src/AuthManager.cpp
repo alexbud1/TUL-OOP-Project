@@ -72,7 +72,7 @@ bool AuthManager::authenticateUser(const string& username, const string& passwor
 
 bool AuthManager::registerUser(const string& username, const string& password){
     if (isUserExist("../../users.json", username)){
-        string error = "CustomerManager with this login already exists. Please try again.";
+        string error = "Customer with this login already exists. Please try again.";
         CLIInterface::displayMessage(error);
         return false;
     }

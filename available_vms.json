@@ -1,0 +1,16 @@
+{
+    "virtual_machines": [
+        {
+            "amount": 10,
+            "type": "EcoVM"
+        },
+        {
+            "amount": 3,
+            "type": "StandardVM"
+        },
+        {
+            "amount": 5,
+            "type": "PerformanceVM"
+        }
+    ]
+}

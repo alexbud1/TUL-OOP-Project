@@ -22,7 +22,8 @@ public:
             string gpuModel,
             unsigned int ramSize,
             unsigned int diskSize,
-            int powerConsumption
+            int powerConsumption,
+            string vm_type
     ) const override {
         std::unique_ptr<VirtualMachine> standardVM(new StandardVM());
         standardVM->setId(id);
@@ -33,7 +34,7 @@ public:
         standardVM->setRamSize(ramSize);
         standardVM->setDiskSize(diskSize);
         standardVM->setPowerConsumption(powerConsumption);
-
+        standardVM->setVMType("StandardVM");
         return standardVM;
     }
 };

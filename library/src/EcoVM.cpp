@@ -35,3 +35,7 @@ void EcoVM::deactivateEcoMode() {
     string message = "ECO mode deactivated for VM with ID: " + std::to_string(getId());
     CLIInterface::displayMessage(message);
 }
+
+bool EcoVM::getIsEco() const {
+    return isEco;
+}

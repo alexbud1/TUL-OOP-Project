@@ -93,11 +93,15 @@ string CustomerManager::setCurrentCustomerName(string& login, string& name) {
                 // Compare the login with the provided login
                 if (user["login"] == login) {
                     // Check if the "name" field exists for the current user
-                    if (user.find("name") != user.end() && user["name"].is_string()) {
+//                    if (user.find("name") != user.end() && user["name"].is_string()) {
                         user["name"] = name; // Set the name
                         JSONUtility::writeJSONToFile("../../users.json", jsonData); // Write the changes to the file
                         return "Name was successfully changed."; // Return a success message
-                    }
+//                    }else{
+//                        user["name"] = name; // Set the name
+//                        JSONUtility::writeJSONToFile("../../users.json", jsonData); // Write the changes to the file
+//                        return "Name was successfully changed."; // Return a success message
+//                    }
                 }
             }
         }
@@ -118,11 +122,11 @@ string CustomerManager::setCurrentCustomerSurname(string& login, string& surname
                 // Compare the login with the provided login
                 if (user["login"] == login) {
                     // Check if the "surname" field exists for the current user
-                    if (user.find("surname") != user.end() && user["surname"].is_string()) {
+//                    if (user.find("surname") != user.end() && user["surname"].is_string()) {
                         user["surname"] = surname; // Set the surname
                         JSONUtility::writeJSONToFile("../../users.json", jsonData); // Write the changes to the file
                         return "Surname was successfully changed."; // Return a success message
-                    }
+//                    }
                 }
             }
         }
@@ -143,11 +147,11 @@ string CustomerManager::setCurrentCustomerEmail(string& login, string& email) {
                 // Compare the login with the provided login
                 if (user["login"] == login) {
                     // Check if the "email" field exists for the current user
-                    if (user.find("email") != user.end() && user["email"].is_string()) {
+//                    if (user.find("email") != user.end() && user["email"].is_string()) {
                         user["email"] = email; // Set the email
                         JSONUtility::writeJSONToFile("../../users.json", jsonData); // Write the changes to the file
                         return "Email was successfully changed."; // Return a success message
-                    }
+//                    }
                 }
             }
         }

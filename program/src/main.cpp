@@ -15,7 +15,7 @@ int main() {
         string choice = CLIInterface::getInput();
         vector<string> options = {"1", "2", "3"};
 
-        if (!CLIInterface::check_option_validity(choice, options)){
+        if (!CLIInterface::checkOptionValidity(choice, options)){
             continue;
         }
 
@@ -38,7 +38,7 @@ int main() {
             string success_message = "You have successfully logged in!";
             CLIInterface::displayMessage(success_message);
 
-            if (not CLIInterface::go_to_main_menu(login)){
+            if (not CLIInterface::goToMainMenu(login)){
                 break;
             }
         }else if (choice == "2"){ // Register
@@ -52,15 +52,15 @@ int main() {
 
             bool registration_success = AuthManager::registerUser(login, password);
             if (!registration_success){
-                string error_message = "Registration failed. Please try again.";
-                CLIInterface::displayMessage(error_message);
+//                string error_message = "Registration failed. Please try again.";
+//                CLIInterface::displayMessage(error_message);
                 continue;
             }
 
             string success_message = "You have successfully registered!";
             CLIInterface::displayMessage(success_message);
 
-            if (not CLIInterface::go_to_main_menu(login)){
+            if (not CLIInterface::goToMainMenu(login)){
                 break;
             }
         }else if (choice == "3"){

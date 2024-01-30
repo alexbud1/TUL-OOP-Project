@@ -16,10 +16,12 @@ public:
 
     static void displayMessage(string& message);
     static string getInput();
-    static void display_profile_info(string& login);
-    static bool display_profile_menu(string& login);
-    static bool go_to_main_menu(string& login);
-    static bool check_option_validity(string option, const vector<string>& options);
+    static void displayProfileInfo(string& login);
+    static bool displayProfileMenu(string& login);
+    static bool goToMainMenu(string& login);
+    static bool checkOptionValidity(string option, const vector<string>& options);
+    static bool displayRentVmMenu(string& login);
+    static bool displayManageVmsMenu(string &login);
 };
 
 #endif //CRANEPROJECT_CLIINTERFACE_H

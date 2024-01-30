@@ -21,7 +21,8 @@ public:
             string gpuModel,
             unsigned int ramSize,
             unsigned int diskSize,
-            int powerConsumption
+            int powerConsumption,
+            string vm_type
     ) const override {
         std::unique_ptr<VirtualMachine> performanceVM(new PerformanceVM());
         performanceVM->setId(id);
@@ -32,7 +33,7 @@ public:
         performanceVM->setRamSize(ramSize);
         performanceVM->setDiskSize(diskSize);
         performanceVM->setPowerConsumption(powerConsumption);
-
+        performanceVM->setVMType("PerformanceVM");
         return performanceVM;
     }
 };

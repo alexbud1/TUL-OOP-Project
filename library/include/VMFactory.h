@@ -17,7 +17,8 @@ public:
             string gpuModel,
             unsigned int ramSize,
             unsigned int diskSize,
-            int powerConsumption
+            int powerConsumption,
+            string vm_type
             ) const = 0;
     virtual ~VMFactory() = default;
 };
